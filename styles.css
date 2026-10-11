@@ -1,0 +1,559 @@
+/* =============================================================================
+   CSS Variables & Global Styles
+   ============================================================================= */
+
+:root {
+  color-scheme: light;
+  --bg: #f7f5f0;
+  --panel: #ffffff;
+  --text: #1f2933;
+  --muted: #667085;
+  --border: #d8dee9;
+  --accent: #2563eb;
+  --spelling: #dc2626;
+  --grammar: #d97706;
+  --style: #7c3aed;
+  --success: #059669;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  font-family: "Noto Sans Georgian", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 40%);
+  color: var(--text);
+}
+
+/* =============================================================================
+   Layout & Header
+   ============================================================================= */
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.header p {
+  margin: 0.35rem 0 1.5rem;
+  color: var(--muted);
+}
+
+/* =============================================================================
+   Controls
+   ============================================================================= */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.controls-hint {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+}
+
+#check-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.25rem;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#check-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+#toggle-rules {
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+#toggle-rules:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#toggle-rules.active {
+  border-color: var(--accent);
+  background: #eff6ff;
+  color: var(--accent);
+}
+
+/* =============================================================================
+   Text Editor & Overlay
+   ============================================================================= */
+
+.editor-panel {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+#input-text,
+.overlay {
+  width: 100%;
+  min-height: 280px;
+  padding: 1.25rem;
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+#input-text {
+  position: relative;
+  z-index: 2;
+  border: none;
+  resize: vertical;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--text);
+}
+
+#input-text::placeholder {
+  color: rgba(102, 112, 133, 0.75);
+}
+
+#input-text:focus {
+  outline: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--text);
+}
+
+.overlay .mark {
+  border-bottom: 2px solid currentColor;
+  border-radius: 2px;
+}
+
+.overlay .mark.spelling {
+  color: var(--spelling);
+  background: rgba(220, 38, 38, 0.08);
+}
+
+.overlay .mark.grammar {
+  color: var(--grammar);
+  background: rgba(217, 119, 6, 0.08);
+}
+
+.overlay .mark.style {
+  color: var(--style);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.status {
+  min-height: 1.5rem;
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+}
+
+/* =============================================================================
+   Issues List
+   ============================================================================= */
+
+.issues {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.issue {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  padding: 0.9rem 1rem;
+}
+
+.issue-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+  align-items: center;
+}
+
+.issue-right {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.issue-type {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.issue-type.spelling {
+  color: var(--spelling);
+}
+
+.issue-type.grammar {
+  color: var(--grammar);
+}
+
+.issue-type.style {
+  color: var(--style);
+}
+
+.issue-word {
+  font-weight: 600;
+}
+
+.source {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Source badge variants */
+.source-builtin {
+  color: #0b69a3;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.source-stanza {
+  color: #0e7490;
+  background: #ecfeff;
+  border-color: #a5f3fc;
+}
+
+.source-rules {
+  color: #7c3aed;
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
+.source-grammar2 {
+  color: #9f1239;
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+
+.source-desktop {
+  color: #b45309;
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.source-unknown {
+  color: #52525b;
+  background: #f4f4f5;
+  border-color: #d4d4d8;
+}
+
+.source-verbal {
+  color: #059669;
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+.source-gr {
+  color: #7c2d12;
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.issue-message {
+  margin: 0;
+  color: var(--muted);
+}
+
+.issue-replacements {
+  margin: 0.65rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.replacement {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #f8fafc;
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+}
+
+.replacement:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* =============================================================================
+   Statistics
+   ============================================================================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: 0.75rem 0.9rem;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 0.2rem;
+}
+
+/* =============================================================================
+   Engine Status Panel
+   ============================================================================= */
+
+.engine {
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
+}
+
+.engine-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.engine-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.engine-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--accent);
+}
+
+.engine-plugins {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.6rem;
+}
+
+.plugin {
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.plugin.ok {
+  background: linear-gradient(180deg, #ecfdf5 0%, #fff 70%);
+  border-color: #a7f3d0;
+}
+
+.plugin.fail {
+  background: linear-gradient(180deg, #fef2f2 0%, #fff 70%);
+  border-color: #fecaca;
+}
+
+.plugin-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.plugin-name > span:first-child {
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.plugin-status {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.plugin.ok .plugin-status {
+  color: var(--success);
+}
+
+.plugin.fail .plugin-status {
+  color: var(--spelling);
+}
+
+.plugin-meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.plugin-meta strong {
+  color: var(--text);
+}
+
+.plugin-stats {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  color: #475569;
+  word-break: break-word;
+}
+
+.plugin-err {
+  color: var(--spelling);
+  margin-left: 0.35rem;
+}
+
+/* =============================================================================
+   Rules Catalog Table
+   ============================================================================= */
+
+.rules-catalog {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  background: #fafafa;
+}
+
+.rules-catalog > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  padding: 0.25rem 0;
+  user-select: none;
+}
+
+#rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+}
+
+#rules-table th,
+#rules-table td {
+  text-align: left;
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+#rules-table thead th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: #fff;
+  position: sticky;
+  top: 0;
+}
+
+#rules-table tbody tr:hover {
+  background: #fff;
+}
+
+#rules-table td code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  background: #eef2ff;
+  padding: 0.05rem 0.35rem;
+  border-radius: 6px;
+  color: #3730a3;
+}
+
+.mini-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.08rem 0.4rem;
+  border-radius: 999px;
+}
+
+.mini-type.spelling {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--spelling);
+}
+
+.mini-type.grammar {
+  background: rgba(217, 119, 6, 0.1);
+  color: var(--grammar);
+}
+
+.mini-type.style {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--style);
+}

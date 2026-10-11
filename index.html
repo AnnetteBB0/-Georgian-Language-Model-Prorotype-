@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGC — Georgian Language Checker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>CGC</h1>
+        <p>Georgian spelling and grammar checker</p>
+      </header>
+
+      <section class="controls">
+        <label class="option">
+          <input type="checkbox" id="check-spelling" checked />
+          Spelling
+        </label>
+        <label class="option">
+          <input type="checkbox" id="check-grammar" checked />
+          Grammar
+        </label>
+        <label class="option">
+          <input type="checkbox" id="check-style" checked />
+          Style
+        </label>
+        <label class="option">
+          <input type="checkbox" id="auto-check" checked />
+          Auto-check
+        </label>
+        <button id="check-button" type="button">Check text</button>
+        <button id="toggle-rules" type="button" class="ghost">
+          Rules &amp; engines
+        </button>
+        <span class="controls-hint">Tip: press Ctrl + Enter to check</span>
+      </section>
+
+      <section class="editor-panel">
+        <textarea
+          id="input-text"
+          spellcheck="false"
+          placeholder="Paste Georgian text here…"
+        >გამარჯობა, როგორ ხარ? ეს ეს ტექსტია.</textarea>
+        <div id="overlay" class="overlay" aria-hidden="true"></div>
+      </section>
+
+      <p id="status" class="status" role="status"></p>
+
+      <section id="issues" class="issues" aria-live="polite"></section>
+      <section id="stats" class="stats" aria-live="polite"></section>
+      <section id="engine" class="engine" hidden>
+        <div class="engine-header">
+          <h3>Engine status</h3>
+          <p id="engine-label" class="engine-label"></p>
+        </div>
+        <div id="engine-plugins" class="engine-plugins"></div>
+        <details class="rules-catalog">
+          <summary>Rule catalog</summary>
+          <table id="rules-table">
+            <thead>
+              <tr>
+                <th>Rule id</th>
+                <th>Type</th>
+                <th>Source plugin</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </details>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
