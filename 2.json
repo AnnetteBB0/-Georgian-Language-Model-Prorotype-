@@ -1,0 +1,311 @@
+{
+    "metadata": {
+        "language": "Georgian",
+        "description": "Comprehensive structural grammar rules for validation, syntactic checking, and morphological analysis based on documentation.",
+        "version": "1.0"
+    },
+    "verb_morphology": {
+        "template_slots_order": [
+            "preverb",
+            "prefixal_person_marker",
+            "version_marker",
+            "verb_root",
+            "passive_marker",
+            "thematic_suffix",
+            "causative_marker",
+            "imperfective_marker",
+            "mood_row_marker",
+            "auxiliary_verb",
+            "suffixal_person_marker",
+            "plural_marker"
+        ],
+        "preverbs": [
+            {
+                "georgian": "მი-",
+                "romanization": "mi-",
+                "meaning": "away from the speaker/addressee"
+            },
+            {
+                "georgian": "მო-",
+                "romanization": "mo-",
+                "meaning": "towards the speaker/addressee"
+            },
+            {
+                "georgian": "მიმო-",
+                "romanization": "mimo-",
+                "meaning": "back and forth"
+            },
+            {
+                "georgian": "ა- / ამო-",
+                "romanization": "a- / amo-",
+                "meaning": "upwards"
+            },
+            {
+                "georgian": "ჩა- / ჩამო-",
+                "romanization": "cha- / chamo-",
+                "meaning": "downwards; sometimes also inwards"
+            },
+            {
+                "georgian": "შე- / შემო-",
+                "romanization": "she- / shemo-",
+                "meaning": "inwards; also by accident and around something/somebody"
+            },
+            {
+                "georgian": "გა- / გამო-",
+                "romanization": "ga- / gamo-",
+                "meaning": "outwards"
+            },
+            {
+                "georgian": "წა- / წამო-",
+                "romanization": "tsa- / tsamo-",
+                "meaning": "away from something/somebody"
+            },
+            {
+                "georgian": "გადა- / გადმო-",
+                "romanization": "gada- / gadmo-",
+                "meaning": "overcoming, across"
+            },
+            {
+                "georgian": "და- / (დამო-)",
+                "romanization": "da- / (damo-)",
+                "meaning": "habitual or downwards"
+            }
+        ],
+        "person_markers": {
+            "subject_markers": {
+                "S1": {
+                    "singular": "v-",
+                    "plural": "v-...-t"
+                },
+                "S2": {
+                    "singular": "h-/s-/ø-",
+                    "plural": "h-/s-/ø-...-t",
+                    "archaic_exceptions": [
+                        "xar",
+                        "mo-x-ved-i",
+                        "mo-x-vash-od-i"
+                    ]
+                },
+                "S3": {
+                    "singular": "ø-...-s / -a / -o",
+                    "plural": "-en / -nen / -an / -n / -es"
+                }
+            },
+            "object_markers": {
+                "O1": {
+                    "singular": "m-",
+                    "plural": "gv-"
+                },
+                "O2": {
+                    "singular": "g-",
+                    "plural": "g-...-t"
+                },
+                "O3": {
+                    "singular": "h-/s-/ø-",
+                    "plural": "h-/s-/ø-...-t"
+                }
+            }
+        },
+        "version_markers": {
+            "allowed_vowels": [
+                "a",
+                "e",
+                "i",
+                "u"
+            ],
+            "semantic_types": {
+                "objective": "v-u-ts'er (I write it to him/her)",
+                "subjective": "v-i-ts'er (I write it for myself)",
+                "locative": "v-a-ts'er (I write it on him/her)",
+                "neutral": "v-ts'er (I write it)"
+            }
+        },
+        "thematic_suffixes": [
+            "eb",
+            "ov",
+            "av",
+            "am",
+            "i",
+            "ob",
+            "op",
+            "ø"
+        ],
+        "causative_rules": {
+            "requirement": "Obligatorily co-occurs with the version marker -a-",
+            "transitive_to_ditransitive": "Uses in-eb or rarely ev (e.g., ch'am -> a-ch'm-ev)"
+        },
+        "imperfective_markers": {
+            "class_1_verbs": "-d-",
+            "class_2_verbs": "-od-",
+            "functions": [
+                "imperfective",
+                "present subjunctive",
+                "future subjunctive",
+                "conditional screeves"
+            ]
+        },
+        "passive_markers": {
+            "morphological_mechanisms": [
+                {
+                    "type": "suffix",
+                    "marker": "-d-",
+                    "position": "end of the verb root"
+                },
+                {
+                    "type": "version_marker",
+                    "marker": "-i-"
+                }
+            ]
+        },
+        "suffixal_nominal_markers": {
+            "transitive_verbs_v_set": {
+                "third_person_singular_present_future": "-s"
+            },
+            "intransitive_past_perfective_medial_indirect": {
+                "first_second_person": [
+                    "i",
+                    "e"
+                ],
+                "third_person": [
+                    "o",
+                    "a"
+                ]
+            }
+        },
+        "auxiliary_verbs_embedded": {
+            "forms": {
+                "1st_singular": "var",
+                "2nd_singular": "xar",
+                "3rd_singular": [
+                    "aris",
+                    "ars"
+                ]
+            },
+            "usage_constraints": "Used in present indicative/perfective of indirect verbs and perfective of transitive verbs when direct object is 1st or 2nd person (m-set for subject, v-set for direct object)."
+        },
+        "separate_auxiliary_modals": {
+            "ndoma": {
+                "meaning": "to want",
+                "class": 4,
+                "syntax_requirement": "Requires either the infinitive form (masdari) or the optative screeve."
+            },
+            "unda": {
+                "meaning": "must",
+                "conjugated": false,
+                "syntax_requirement": "Uses the optative screeve for 'must do something', pluperfect screeve for 'had to'."
+            },
+            "shedzleba": {
+                "meaning": "can",
+                "class": 4,
+                "syntax_requirement": "Uses either the optative screeve or the infinitive form.",
+                "negation_constraint": "Established with special negation particle 'ver'. Do not use with the word 'shedzleba' itself (e.g., use 'ver' + verb directly)."
+            }
+        }
+    },
+    "negation_rules": {
+        "base_particles": {
+            "ar": {
+                "meaning": "not",
+                "context": "Chief negative particle"
+            },
+            "ver": {
+                "meaning": "cannot",
+                "context": "Indicates grammatical subject is unable to carry out an action"
+            },
+            "nu": {
+                "meaning": "do not!",
+                "context": "Used strictly for negative commands/imperatives"
+            }
+        },
+        "derived_particles_ghar_suffix": {
+            "aghar": {
+                "meaning": "no longer, not anymore",
+                "derived_from": "ar"
+            },
+            "veghar": {
+                "meaning": "can no longer, cannot anymore",
+                "derived_from": "ver"
+            },
+            "nughar": {
+                "meaning": "do no longer, do not anymore",
+                "derived_from": "nu"
+            }
+        }
+    },
+    "syntax_and_word_order": {
+        "general_word_order": {
+            "strictness": "Not very strict",
+            "common_structure": [
+                "subject",
+                "indirect_object",
+                "direct_object",
+                "verb"
+            ],
+            "pronoun_drop": "Pro-drop/null subject is common; pronoun arguments can be frequently dropped."
+        },
+        "interrogatives": {
+            "pronoun_strict_word_order": "Must appear immediately pre-verbally (directly before the verb).",
+            "lexicon": [
+                {
+                    "georgian": "რა",
+                    "romanization": "ra",
+                    "english": "what?"
+                },
+                {
+                    "georgian": "ვინ",
+                    "romanization": "vin",
+                    "english": "who?"
+                },
+                {
+                    "georgian": "რამდენი",
+                    "romanization": "ramdeni",
+                    "english": "how much (many)?"
+                },
+                {
+                    "georgian": "რომელი",
+                    "romanization": "romeli",
+                    "english": "which?"
+                },
+                {
+                    "georgian": "როგორ",
+                    "romanization": "rogor",
+                    "english": "how?"
+                },
+                {
+                    "georgian": "რატომ",
+                    "romanization": "rat'om",
+                    "english": "why?"
+                },
+                {
+                    "georgian": "რისთვის",
+                    "romanization": "ristvis",
+                    "english": "what for?"
+                },
+                {
+                    "georgian": "სად",
+                    "romanization": "sad",
+                    "english": "where?"
+                },
+                {
+                    "georgian": "როდის",
+                    "romanization": "rodis",
+                    "english": "when?"
+                }
+            ]
+        },
+        "question_types": {
+            "yes_no_questions": {
+                "mechanism": "Altering the intonation of a statement sentence; pitch rises towards the end."
+            },
+            "tag_questions_xom": {
+                "particle": "xom",
+                "position_constraint": "Must occupy the exact second position within the sentence.",
+                "negative_tag_exception": "When answer expected is negative, a negative particle and full form 'aris' are added right after 'xom' (e.g., 'xom ar aris')."
+            },
+            "polite_questions_tu": {
+                "particle": "tu",
+                "function": "Used to make a question more polite; cannot be easily translated directly to English."
+            }
+        }
+    }
+}
